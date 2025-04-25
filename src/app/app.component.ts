@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, Inject, InjectionToken, Injector, OnInit} from '@angular/core';
 import {Course} from './model/course';
 import {Observable} from 'rxjs';
-import {AppConfig, CONFIG_TOKEN} from './config';
+import {APP_CONFIG, AppConfig, CONFIG_TOKEN} from './config';
 import {COURSES} from '../db-data';
 import {CoursesService} from './services/courses.service';
 import {createCustomElement} from '@angular/elements';
@@ -24,19 +24,19 @@ import { HttpClient } from '@angular/common/http';
         NgForOf,
         CommonModule
     ],
+    providers: [{provide: CONFIG_TOKEN, useFactory: () => APP_CONFIG}]
    
 })
 export class AppComponent implements OnInit {
 
     courses$ : Observable<Course[]>;    
 
-    constructor(private coursesService:CoursesService) {
-    console.log('root constructor', this.coursesService.id);
+    constructor(private coursesService:CoursesService, @Inject(CONFIG_TOKEN) private conf: AppConfig) {
+        console.log(conf);
     }
   
 
     ngOnInit() {      
-        console.log(this.coursesService);
         this.courses$ = this.coursesService.loadCourses();
        
     }

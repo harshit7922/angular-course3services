@@ -41,7 +41,6 @@ export class CourseCardComponent implements  OnInit {
 
     constructor(private coursesService: CoursesService,
                 @Attribute('type') private type: string) {
-console.log('constructor', this.coursesService.id);
 
     }
 
