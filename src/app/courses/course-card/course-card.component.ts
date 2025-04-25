@@ -11,7 +11,7 @@ import {
     Output
 } from '@angular/core';
 import {Course} from '../../model/course';
-import {CoursesService} from '../courses.service';
+import {CoursesService} from '../../services/courses.service';
 import {CommonModule, NgIf} from '@angular/common';
 
 
@@ -45,7 +45,7 @@ export class CourseCardComponent implements  OnInit {
     }
 
     ngOnInit() {
-
+     console.log("course card component - courses service", this.coursesService)
 
     }
 

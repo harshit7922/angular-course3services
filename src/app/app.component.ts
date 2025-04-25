@@ -3,7 +3,7 @@ import {Course} from './model/course';
 import {Observable} from 'rxjs';
 import {AppConfig, CONFIG_TOKEN} from './config';
 import {COURSES} from '../db-data';
-import {CoursesService} from './courses/courses.service';
+import {CoursesService} from './services/courses.service';
 import {createCustomElement} from '@angular/elements';
 import {CourseTitleComponent} from './course-title/course-title.component';
 import {CourseCardComponent} from './courses/course-card/course-card.component';
@@ -28,12 +28,13 @@ export class AppComponent implements OnInit {
 
     courses$ : Observable<Course[]>;    
 
-    constructor(private http:HttpClient) {
+    constructor(private http:HttpClient, private coursesService:CoursesService) {
     
     }
   
 
     ngOnInit() {      
+        console.log(this.coursesService);
         const params = new HttpParams()
         .set('page', '1')
         .set('pageSize', '10');
