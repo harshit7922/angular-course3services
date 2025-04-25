@@ -10,4 +10,9 @@ export const APP_CONFIG: Config = {
     CourseCacheSize: 100,
     };
 
-    export const CONFIG_TOKEN = new InjectionToken<Config>('CONFIG_TOKEN', );
+    export const CONFIG_TOKEN = new InjectionToken<Config>('CONFIG_TOKEN',
+        {
+            providedIn: 'root',
+            factory: () => APP_CONFIG
+        }
+     );

@@ -23,8 +23,7 @@ import { HttpClient } from '@angular/common/http';
         CourseImageComponent,
         NgForOf,
         CommonModule
-    ],
-    providers: [{provide: CONFIG_TOKEN, useValue: APP_CONFIG}]
+    ]
    
 })
 export class AppComponent implements OnInit {
