@@ -25,10 +25,8 @@ import { HttpClient } from '@angular/common/http';
         CommonModule
     ],
     providers: [
-        { 
-            provide: CoursesService, 
-            useClass: CoursesService
-        }],
+        CoursesService
+    ],
 })
 export class AppComponent implements OnInit {
 
