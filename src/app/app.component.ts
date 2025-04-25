@@ -9,7 +9,6 @@ import {CourseTitleComponent} from './course-title/course-title.component';
 import {CourseCardComponent} from './courses/course-card/course-card.component';
 import {CourseImageComponent} from './courses/course-image/course-image.component';
 import {NgForOf} from '@angular/common';
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
 
@@ -28,18 +27,15 @@ export class AppComponent implements OnInit {
 
     courses$ : Observable<Course[]>;    
 
-    constructor(private http:HttpClient, private coursesService:CoursesService) {
+    constructor(private coursesService:CoursesService) {
     
     }
   
 
     ngOnInit() {      
         console.log(this.coursesService);
-        const params = new HttpParams()
-        .set('page', '1')
-        .set('pageSize', '10');
-
-       this.courses$ =  this.http.get<Course[]>('/api/courses',{params})
+        this.courses$ = this.coursesService.loadCourses();
+       
     }
 
     onEditCourse() {
