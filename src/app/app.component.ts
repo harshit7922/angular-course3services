@@ -1,0 +1,70 @@
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, Inject, Injector, OnInit} from '@angular/core';
+import {Course} from './model/course';
+import {Observable} from 'rxjs';
+import {AppConfig, CONFIG_TOKEN} from './config';
+import {COURSES} from '../db-data';
+import {CoursesService} from './courses/courses.service';
+import {createCustomElement} from '@angular/elements';
+import {CourseTitleComponent} from './course-title/course-title.component';
+import {CourseCardComponent} from './courses/course-card/course-card.component';
+import {CourseImageComponent} from './courses/course-image/course-image.component';
+import {NgForOf} from '@angular/common';
+import { HttpClient, HttpParams } from '@angular/common/http';
+
+
+@Component({
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    imports: [
+        CourseCardComponent,
+        CourseImageComponent,
+        NgForOf
+    ]
+})
+export class AppComponent implements OnInit {
+
+    courses;//: Course[] = COURSES;
+
+    //coursesTotal = this.courses.length;
+
+    constructor(private http:HttpClient) {
+    
+    }
+
+    // constructor(
+    //     private coursesService: CoursesService,
+    //     @Inject(CONFIG_TOKEN) private config: AppConfig,
+    //     private injector: Injector) {
+
+    // }
+
+    ngOnInit() {
+
+        //const htmlElement = createCustomElement(CourseTitleComponent, {injector:this.injector});
+
+        //customElements.define('course-title', htmlElement);
+
+        const params = new HttpParams()
+        .set('page', '1')
+        .set('pageSize', '3');
+
+        this.http.get('/api/courses',{params}).subscribe(val => 
+            this.courses=val);
+    }
+
+    onEditCourse() {
+
+            //this.courses[1].category = 'ADVANCED';
+
+    }
+
+    save(course: Course) {
+        // this.coursesService.saveCourse(course)
+        //     .subscribe(
+        //         () => console.log('Course Saved!')
+        //     );
+    }
+
+
+}
