@@ -10,6 +10,7 @@ import {CourseCardComponent} from './courses/course-card/course-card.component';
 import {CourseImageComponent} from './courses/course-image/course-image.component';
 import {NgForOf} from '@angular/common';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -19,38 +20,25 @@ import { HttpClient, HttpParams } from '@angular/common/http';
     imports: [
         CourseCardComponent,
         CourseImageComponent,
-        NgForOf
+        NgForOf,
+        CommonModule
     ]
 })
 export class AppComponent implements OnInit {
 
-    courses;//: Course[] = COURSES;
-
-    //coursesTotal = this.courses.length;
+    courses$ : Observable<Course[]>;    
 
     constructor(private http:HttpClient) {
     
     }
+  
 
-    // constructor(
-    //     private coursesService: CoursesService,
-    //     @Inject(CONFIG_TOKEN) private config: AppConfig,
-    //     private injector: Injector) {
-
-    // }
-
-    ngOnInit() {
-
-        //const htmlElement = createCustomElement(CourseTitleComponent, {injector:this.injector});
-
-        //customElements.define('course-title', htmlElement);
-
+    ngOnInit() {      
         const params = new HttpParams()
         .set('page', '1')
-        .set('pageSize', '3');
+        .set('pageSize', '10');
 
-        this.http.get('/api/courses',{params}).subscribe(val => 
-            this.courses=val);
+       this.courses$ =  this.http.get<Course[]>('/api/courses',{params})
     }
 
     onEditCourse() {
