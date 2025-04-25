@@ -24,9 +24,7 @@ import { HttpClient } from '@angular/common/http';
         NgForOf,
         CommonModule
     ],
-    providers: [
-        CoursesService
-    ],
+   
 })
 export class AppComponent implements OnInit {
 
