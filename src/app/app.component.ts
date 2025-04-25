@@ -24,7 +24,7 @@ import { HttpClient } from '@angular/common/http';
         NgForOf,
         CommonModule
     ],
-    providers: [{provide: CONFIG_TOKEN, useFactory: () => APP_CONFIG}]
+    providers: [{provide: CONFIG_TOKEN, useValue: APP_CONFIG}]
    
 })
 export class AppComponent implements OnInit {
