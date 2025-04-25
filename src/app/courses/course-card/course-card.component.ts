@@ -22,7 +22,8 @@ import {CommonModule, NgIf} from '@angular/common';
     styleUrls: ['./course-card.component.css'],
     imports: [
         NgIf
-    ]
+    ],
+    providers:[CoursesService]
 })
 export class CourseCardComponent implements  OnInit {
 
@@ -40,12 +41,12 @@ export class CourseCardComponent implements  OnInit {
 
     constructor(private coursesService: CoursesService,
                 @Attribute('type') private type: string) {
-
+console.log('constructor', this.coursesService.id);
 
     }
 
     ngOnInit() {
-     console.log("course card component - courses service", this.coursesService)
+    
 
     }
 

@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
     courses$ : Observable<Course[]>;    
 
     constructor(private coursesService:CoursesService) {
-    
+    console.log('root constructor', this.coursesService.id);
     }
   
 
