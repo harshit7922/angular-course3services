@@ -27,7 +27,7 @@ import {CommonModule, NgIf} from '@angular/common';
     providers:[CoursesService],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CourseCardComponent implements  OnInit, OnDestroy, OnChanges {
+export class CourseCardComponent implements  OnInit, OnDestroy, OnChanges, AfterContentChecked {
 
     @Input()
     course: Course;
@@ -45,15 +45,22 @@ export class CourseCardComponent implements  OnInit, OnDestroy, OnChanges {
                 @Attribute('type') private type: string) {
         console.log('constructor:', this.course);
     }
+    
+    ngOnChanges(changes: SimpleChanges): void {
+        console.log('onchanges method', changes)
+     }
 
     ngOnInit() {
     console.log('ngOnInit:', this.course);
 
     }
 
-    ngOnChanges(changes: SimpleChanges): void {
-       console.log('onchanges method', changes)
+    ngAfterContentChecked(): void {
+        console.log('ngAfterContentChecked:');
     }
+    
+
+
 
     ngOnDestroy() {
         console.log('ngOnDestroy:', this.course);
