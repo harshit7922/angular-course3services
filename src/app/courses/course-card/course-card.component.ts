@@ -57,6 +57,7 @@ export class CourseCardComponent implements  OnInit, OnDestroy, OnChanges, After
 
     ngAfterContentChecked(): void {
         console.log('ngAfterContentChecked:');
+        this.course.description = this.course.description + ' - ' + this.type;
     }
     
 
