@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, Inject, InjectionToken, Injector, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, Inject, InjectionToken, Injector, OnInit, reflectComponentType} from '@angular/core';
 import {Course} from './model/course';
 import {Observable} from 'rxjs';
 import {APP_CONFIG, AppConfig, CONFIG_TOKEN} from './config';
@@ -41,8 +41,9 @@ export class AppComponent implements OnInit {
     }
 
     onEditCourse() {
-
-            this.courses$[0].category = 'ADVANCED';
+            const refObj:any  = {...this.courses$[0]};
+            refObj.description = 'Angular';
+            this.courses$[0] = refObj;
 
     }
 
