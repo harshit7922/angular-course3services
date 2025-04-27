@@ -27,7 +27,7 @@ import {CommonModule, NgIf} from '@angular/common';
     providers:[CoursesService],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CourseCardComponent implements  OnInit, OnDestroy, OnChanges, AfterContentChecked {
+export class CourseCardComponent implements  OnInit, OnDestroy, OnChanges, AfterContentChecked, AfterViewChecked {
 
     @Input()
     course: Course;
@@ -60,7 +60,11 @@ export class CourseCardComponent implements  OnInit, OnDestroy, OnChanges, After
         this.course.description = this.course.description + ' - ' + this.type;
     }
     
-
+    ngAfterViewChecked(): void {
+        console.log('ngAfterViewChecked:');
+        
+        this.course.description = 'ngAfterViewChecked - ' + this.type;
+    }
 
 
     ngOnDestroy() {
