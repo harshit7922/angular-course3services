@@ -11,6 +11,7 @@ import {CourseImageComponent} from './courses/course-image/course-image.componen
 import {NgForOf} from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { FilterByCategoryPipe } from './courses/filter-by-category.pipe';
 
 
 
@@ -22,7 +23,8 @@ import { HttpClient } from '@angular/common/http';
         CourseCardComponent,
         CourseImageComponent,
         NgForOf,
-        CommonModule
+        CommonModule,
+        FilterByCategoryPipe
     ]
    
 })
