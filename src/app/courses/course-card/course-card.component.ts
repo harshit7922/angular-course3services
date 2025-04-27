@@ -52,7 +52,7 @@ export class CourseCardComponent implements  OnInit, OnDestroy, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-       console.log('onchanges method')
+       console.log('onchanges method', changes)
     }
 
     ngOnDestroy() {

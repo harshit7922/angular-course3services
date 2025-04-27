@@ -41,12 +41,12 @@ export class AppComponent implements OnInit {
     }
 
     onEditCourse() {
-            // const refObj:any  = {...this.courses$[0]};
-            // refObj.description = 'Angular';
-            // this.courses$[0] = refObj;
-
-            this.courses$ = [undefined];
-
+            const refObj:any  = {...this.courses$[0]};
+            refObj.description = 'Angular';
+            this.courses$[0] = refObj;
+            
+            //this will not get triggered on change method as object is not changed. 
+            //this.courses$[0].description = 'Angular'; 
     }
 
     save(course: Course) {
