@@ -31,19 +31,21 @@ export class AppComponent implements OnInit {
     courses$ = COURSES; //Observable<Course[]>;    
 
     constructor(private coursesService:CoursesService, @Inject(CONFIG_TOKEN) private conf: AppConfig) {
-        console.log(conf);
+        
     }
   
 
     ngOnInit() {      
-        //this.courses$ = this.coursesService.loadCourses();
+      
        
     }
 
     onEditCourse() {
-            const refObj:any  = {...this.courses$[0]};
-            refObj.description = 'Angular';
-            this.courses$[0] = refObj;
+            // const refObj:any  = {...this.courses$[0]};
+            // refObj.description = 'Angular';
+            // this.courses$[0] = refObj;
+
+            this.courses$ = [undefined];
 
     }
 
