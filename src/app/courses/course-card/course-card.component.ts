@@ -23,7 +23,8 @@ import {CommonModule, NgIf} from '@angular/common';
     imports: [
         NgIf
     ],
-    providers:[CoursesService]
+    providers:[CoursesService],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CourseCardComponent implements  OnInit {
 

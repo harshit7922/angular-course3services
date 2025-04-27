@@ -28,7 +28,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
 
-    courses$ : Observable<Course[]>;    
+    courses$ = COURSES; //Observable<Course[]>;    
 
     constructor(private coursesService:CoursesService, @Inject(CONFIG_TOKEN) private conf: AppConfig) {
         console.log(conf);
@@ -36,13 +36,13 @@ export class AppComponent implements OnInit {
   
 
     ngOnInit() {      
-        this.courses$ = this.coursesService.loadCourses();
+        //this.courses$ = this.coursesService.loadCourses();
        
     }
 
     onEditCourse() {
 
-            //this.courses[1].category = 'ADVANCED';
+            this.courses$[0].category = 'ADVANCED';
 
     }
 
