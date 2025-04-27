@@ -8,7 +8,8 @@ import {
     Input, OnChanges,
     OnDestroy,
     OnInit,
-    Output
+    Output,
+    SimpleChanges
 } from '@angular/core';
 import {Course} from '../../model/course';
 import {CoursesService} from '../../services/courses.service';
@@ -26,7 +27,7 @@ import {CommonModule, NgIf} from '@angular/common';
     providers:[CoursesService],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CourseCardComponent implements  OnInit, OnDestroy {
+export class CourseCardComponent implements  OnInit, OnDestroy, OnChanges {
 
     @Input()
     course: Course;
@@ -48,6 +49,10 @@ export class CourseCardComponent implements  OnInit, OnDestroy {
     ngOnInit() {
     console.log('ngOnInit:', this.course);
 
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+       console.log('onchanges method')
     }
 
     ngOnDestroy() {
