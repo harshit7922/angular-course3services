@@ -25,7 +25,8 @@ import {CommonModule, NgIf} from '@angular/common';
         NgIf
     ],
     providers:[CoursesService],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,    
+    standalone: true
 })
 export class CourseCardComponent implements  OnInit, OnDestroy, OnChanges, 
 AfterContentChecked, AfterViewChecked,

@@ -25,7 +25,8 @@ import { FilterByCategoryPipe } from './courses/filter-by-category.pipe';
         NgForOf,
         CommonModule,
         FilterByCategoryPipe
-    ]
+    ],
+    standalone: true
    
 })
 export class AppComponent implements OnInit {
