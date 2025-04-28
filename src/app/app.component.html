@@ -16,7 +16,7 @@
 
   
 
-  @defer(on idle; prefetch on idle) {
+  @defer(on timer(15s); prefetch on timer(10s)) {
       <div class="courses">
         <course-card  *ngFor="let course of courses$ | filterByCategory: 'BEGINNER'"
                  (courseChanged)="save($event)"
