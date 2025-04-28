@@ -28,8 +28,11 @@
           </course-card>
       </div>
   }
-  @placeholder(minimum 3s) {
+  @placeholder {
     <h2> this is a placeholder</h2>
+  }
+  @loading(minimum 3s; after 1s) {
+    <h2>Loading...</h2>
   }
 
   
