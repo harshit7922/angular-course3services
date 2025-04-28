@@ -16,7 +16,7 @@
 
   
 
-  @defer {
+  @defer(on idle; prefetch on idle) {
       <div class="courses">
         <course-card  *ngFor="let course of courses$ | filterByCategory: 'BEGINNER'"
                  (courseChanged)="save($event)"
@@ -31,7 +31,7 @@
   @placeholder {
     <h2> this is a placeholder</h2>
   }
-  @loading(minimum 3s; after 1s) {
+  @loading {
     <h2>Loading...</h2>
   }
 
