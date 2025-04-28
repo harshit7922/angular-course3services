@@ -14,9 +14,9 @@
 
   </div>
 
-  
+  <div #title> Hello..... </div>
 
-  @defer(on viewport; prefetch on idle) {
+  @defer(on viewport(title); prefetch on idle) {
       <div class="courses">
         <course-card  *ngFor="let course of courses$ | filterByCategory: 'BEGINNER'"
                  (courseChanged)="save($event)"
