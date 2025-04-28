@@ -14,19 +14,25 @@
 
   </div>
 
-  <div class="courses">
+  
 
-    <course-card  *ngFor="let course of courses$ | filterByCategory: 'BEGINNER'"
+  @defer {
+      <div class="courses">
+        <course-card  *ngFor="let course of courses$ | filterByCategory: 'BEGINNER'"
                  (courseChanged)="save($event)"
                  type="beginner"
                  [course]="course">
 
-      <course-image [src]="course.iconUrl"></course-image>
+          <course-image [src]="course.iconUrl"></course-image>
 
-    </course-card>
+          </course-card>
+      </div>
+  }
+  @placeholder(minimum 3s) {
+    <h2> this is a placeholder</h2>
+  }
 
-
-  </div>
+  
 
 
 </div>
