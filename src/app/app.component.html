@@ -4,7 +4,7 @@
        src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
 
 </div>
-
+<div style="border: 5px solid red; min-height: 900px; margin: 10px;"></div>
 <div>
 
   <div class="demo">
@@ -16,7 +16,7 @@
 
   
 
-  @defer(on timer(15s); prefetch on timer(10s)) {
+  @defer(on viewport; prefetch on idle) {
       <div class="courses">
         <course-card  *ngFor="let course of courses$ | filterByCategory: 'BEGINNER'"
                  (courseChanged)="save($event)"
